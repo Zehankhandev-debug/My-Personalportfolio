@@ -310,6 +310,28 @@ export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Add Google Site Verification meta tag
+  useEffect(() => {
+    // Create meta tag
+    const metaTag = document.createElement('meta');
+    metaTag.name = 'google-site-verification';
+    metaTag.content = 'm6D-Ihlpamo32dttft-N7FinIxgoFoyp7neNF6DdWBs';
+    
+    // Check if tag already exists
+    const existingTag = document.querySelector('meta[name="google-site-verification"]');
+    if (!existingTag) {
+      // Add to head
+      document.head.appendChild(metaTag);
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      if (document.head.contains(metaTag)) {
+        document.head.removeChild(metaTag);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
