@@ -5,6 +5,7 @@ import {
   Mail, Phone, Github, Linkedin, ExternalLink, Sparkles, ArrowLeft, Sun, Moon,
   Calendar, XCircle, ChevronRight
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Added useNavigate
 
 const config = {
   hero: {
@@ -561,6 +562,8 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(true);
   const [showCallPopup, setShowCallPopup] = useState(false);
+  
+  const navigate = useNavigate(); // Added navigation hook
 
   // Toggle dark mode
   const toggleDarkMode = () => {
@@ -687,9 +690,9 @@ export default function HomePage() {
               </button>
             ))}
             
-            {/* Projects Page Link */}
+            {/* FIXED: Projects Page Link */}
             <button
-              onClick={() => window.location.href = '/projects'}
+              onClick={() => navigate('/projects')}
               className={`${
                 darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               } font-medium transition-all duration-500 relative group`}
@@ -749,10 +752,10 @@ export default function HomePage() {
               </button>
             ))}
             
-            {/* Mobile Projects Page Link */}
+            {/* FIXED: Mobile Projects Page Link */}
             <button
               onClick={() => { 
-                window.location.href = '/projects';
+                navigate('/projects');
                 setMobileMenuOpen(false);
               }}
               className={`text-left ${
@@ -1062,9 +1065,9 @@ export default function HomePage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                {/* View All Projects Button */}
+                {/* FIXED: View All Projects Button */}
                 <button
-                  onClick={() => window.location.href = '/projects'}
+                  onClick={() => navigate('/projects')}
                   className={`px-8 py-3 ${
                     darkMode 
                       ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 border-blue-500/30' 
@@ -1088,7 +1091,7 @@ export default function HomePage() {
               {/* Additional Links */}
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
                 <button 
-                  onClick={() => window.location.href = '/projects'}
+                  onClick={() => navigate('/projects')}
                   className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors text-sm flex items-center gap-2`}
                 >
                   <Eye size={14} />
@@ -1312,8 +1315,9 @@ export default function HomePage() {
               >
                 <ArrowLeft size={14} /> Back to Top
               </button>
+              {/* FIXED: Footer Projects Link */}
               <button 
-                onClick={() => window.location.href = '/projects'}
+                onClick={() => navigate('/projects')}
                 className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors flex items-center gap-2 text-sm`}
               >
                 <Eye size={14} /> All Projects
