@@ -22,20 +22,31 @@ import {
   Clock,
   ExternalLink,
   Eye,
-  FileCode,
-  Figma,
-  Github,
   Grid,
+  Laptop,
+  Layers,
   List,
   Mail,
   MapPin,
   Menu,
   MessageSquare,
-  Server,
-  Wind,
+  Monitor,
   X,
   XCircle,
 } from 'lucide-react';
+import {
+  SiExpo,
+  SiFigma,
+  SiGithub,
+  SiJavascript,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPhp,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+} from 'react-icons/si';
 
 /* ------------------------------------------------------------------ */
 /* Data — single source of truth for all portfolio content.            */
@@ -43,10 +54,10 @@ import {
 
 const hero = {
   name: 'Zehan Khan',
-  title: 'Web Developer',
+  title: 'Full-Stack Developer',
   badge: 'Available for freelance projects',
   subheadline:
-    "I build fast, scalable web products — from custom WordPress platforms to React & Next.js applications — for clients shipping real businesses.",
+    "I build fast, scalable products across web and mobile — React, Next.js, and Node.js on the backend, React Native (Expo) and API integrations on the front — plus custom WordPress builds when that's the right tool.",
   stats: [
     { value: '6+', label: 'Years Experience' },
     { value: '150+', label: 'Projects Delivered' },
@@ -60,8 +71,8 @@ const hero = {
   location: 'Aligarh, UP, India',
   resume: '/Zehankhan.pdf',
   bio: [
-    "I'm a full-stack web developer who's spent six years moving between WordPress, React, and Next.js — whichever gets a client's product shipped without cutting corners.",
-    "Most of my work starts as a rebuild: a slow site, a CMS nobody trusts, a checkout that leaks conversions. I like that part — finding what's actually broken and fixing it cleanly.",
+    "I'm a full-stack developer who's spent six years moving between React, Next.js, Node.js, and React Native — whichever gets a client's product shipped without cutting corners. WordPress still shows up when a project calls for it.",
+    "Most of my work starts as a rebuild: a slow site, a CMS nobody trusts, a checkout that leaks conversions, an app stuck in review. I like that part — finding what's actually broken and fixing it cleanly, API by API.",
   ],
 };
 
@@ -75,24 +86,24 @@ const navLinks = [
 
 const skills = [
   {
-    category: 'WordPress Development',
-    icon: 'Globe',
-    items: ['Custom Themes', 'Custom Plugins', 'WooCommerce', 'Elementor', 'ACF'],
-  },
-  {
-    category: 'E-commerce Solutions',
-    icon: 'ShoppingBag',
-    items: ['Shopify Apps', 'Shopify Themes', 'Payment Integration', 'Product Management'],
-  },
-  {
     category: 'Frontend Technologies',
     icon: 'Code2',
-    items: ['React.js', 'Next.js', 'Tailwind CSS', 'JavaScript', 'HTML5/CSS3'],
+    items: ['React.js', 'Next.js', 'Tailwind CSS', 'JavaScript', 'TypeScript'],
   },
   {
-    category: 'Backend & CMS',
+    category: 'Mobile & APIs',
+    icon: 'Smartphone',
+    items: ['React Native', 'Expo', 'REST APIs', 'Third-Party Integrations', 'Push Notifications'],
+  },
+  {
+    category: 'Backend & Databases',
     icon: 'Server',
-    items: ['PHP', 'Node.js', 'REST APIs', 'SQL', 'Custom Development'],
+    items: ['Node.js', 'Express', 'PHP', 'MySQL', 'SQL'],
+  },
+  {
+    category: 'WordPress & E-commerce',
+    icon: 'Globe',
+    items: ['Custom Themes', 'WooCommerce', 'Shopify', 'Elementor', 'ACF'],
   },
 ];
 
@@ -287,6 +298,41 @@ const projects = [
     features: ['User Dashboard', 'Appointment System', 'Real-time Updates'],
     screenshot: '/projects/md-life.png',
   },
+  {
+    id: 13,
+    title: 'GrowthKompas',
+    category: 'SaaS',
+    url: 'https://growthkompas.com/',
+    description:
+      'A focused LinkedIn writing companion — marketing site plus a full web app dashboard for drafts, writing activity, and daily prompts delivered straight to WhatsApp.',
+    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Authentication'],
+    features: ['Marketing Site', 'Web App Dashboard', 'WhatsApp Delivery'],
+    screenshot: '/projects/growthkompas-landing.png',
+    screenshots: [
+      { label: 'Website', src: '/projects/growthkompas-landing.png' },
+      { label: 'Web App', src: '/projects/growthkompas-webapp-login.png' },
+      { label: 'Dashboard', src: '/projects/growthkompas-webapp-dashboard.png' },
+    ],
+    featured: true,
+  },
+  {
+    id: 14,
+    title: 'Mapians',
+    category: 'Travel',
+    url: 'https://mapians.com/',
+    description:
+      'Global travel eSIM platform covering 190+ countries, paired with a companion Android app for browsing and managing data plans on the go.',
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'Payments'],
+    features: ['190+ Country Coverage', 'Regional & Global Bundles', 'Android App (Play Store review)'],
+    screenshot: '/projects/mapians-website.png',
+    screenshots: [
+      { label: 'Website', src: '/projects/mapians-website.png' },
+      { label: 'App · Plans', src: '/projects/mapians-app-plans.jpg', note: 'Android · in Play Store review' },
+      { label: 'App · Regions', src: '/projects/mapians-app-regions.jpg', note: 'Android · in Play Store review' },
+      { label: 'App · Sign in', src: '/projects/mapians-app-signin.jpg', note: 'Android · in Play Store review' },
+    ],
+    featured: true,
+  },
 ];
 
 const featuredProjects = projects.filter((p) => p.featured);
@@ -309,6 +355,8 @@ const categoryTheme = {
   Technology: 'from-emerald-500 via-teal-500 to-cyan-500',
   Industrial: 'from-slate-500 via-slate-400 to-orange-400',
   Healthcare: 'from-teal-500 via-emerald-500 to-lime-400',
+  SaaS: 'from-blue-600 via-indigo-500 to-violet-500',
+  Travel: 'from-sky-500 via-cyan-500 to-emerald-400',
 };
 
 const getCategoryGradient = (category) => categoryTheme[category] || 'from-indigo-500 via-purple-500 to-fuchsia-500';
@@ -509,6 +557,42 @@ function RotatingBadge({ text, size = 128, className = '', children }) {
   );
 }
 
+// A ring of brand icons that continuously orbits its center. Each icon is
+// counter-rotated against the ring's spin so it stays upright while its
+// position sweeps around the circle — used behind the hero illustration.
+function TechOrbit({ items, radius = 170, duration = 32, iconBox = 44 }) {
+  return (
+    <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+      <motion.div
+        className="absolute inset-0"
+        animate={{ rotate: 360 }}
+        transition={{ duration, repeat: Infinity, ease: 'linear' }}
+      >
+        {items.map((item, i) => {
+          const angle = (i / items.length) * 360;
+          return (
+            <div
+              key={item.label}
+              className="absolute left-1/2 top-1/2"
+              style={{ transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)` }}
+            >
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration, repeat: Infinity, ease: 'linear' }}
+                className="-ml-[22px] -mt-[22px] flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] shadow-lg backdrop-blur-sm"
+                style={{ width: iconBox, height: iconBox }}
+                title={item.label}
+              >
+                <item.icon size={iconBox * 0.45} color={item.color} />
+              </motion.div>
+            </div>
+          );
+        })}
+      </motion.div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Layout / chrome                                                      */
 /* ------------------------------------------------------------------ */
@@ -691,9 +775,11 @@ function Nav({ variant = 'home' }) {
         }`}
       >
         <Link to="/" className="group flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-sm font-bold text-black transition-transform duration-300 group-hover:scale-105">
-            ZK
-          </span>
+          <img
+            src="/zehan-profile.jpg"
+            alt={hero.name}
+            className="h-8 w-8 flex-shrink-0 rounded-full object-cover ring-1 ring-white/15 transition-transform duration-300 group-hover:scale-105"
+          />
           <span className="hidden text-sm font-medium text-white/80 sm:inline">{hero.name}</span>
         </Link>
 
@@ -709,7 +795,7 @@ function Nav({ variant = 'home' }) {
               </button>
             ))}
 
-          {variant === 'projects' ? (
+          {variant !== 'home' ? (
             <Link
               to="/"
               className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm text-white/60 transition-colors duration-300 hover:bg-white/10 hover:text-white"
@@ -765,7 +851,7 @@ function Nav({ variant = 'home' }) {
                   </button>
                 ))}
 
-              {variant === 'projects' ? (
+              {variant !== 'home' ? (
                 <Link
                   to="/"
                   onClick={() => setOpen(false)}
@@ -801,16 +887,18 @@ function Nav({ variant = 'home' }) {
   );
 }
 
-const footerGeneral = [...navLinks, { label: 'All Projects', href: '/projects' }];
+const footerGeneral = [...navLinks, { label: 'All Projects', href: '/projects' }, { label: 'Uses', href: '/uses' }];
 
 function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 px-6 pb-8 pt-16 md:px-10">
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <span className="mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-white text-sm font-bold text-black">
-            ZK
-          </span>
+          <img
+            src="/zehan-profile.jpg"
+            alt={hero.name}
+            className="mb-4 h-8 w-8 rounded-full object-cover ring-1 ring-white/15"
+          />
           <p className="max-w-xs text-sm text-white/45">
             I&rsquo;m {hero.name.split(' ')[0]} — a {hero.title.toLowerCase()}, freelancer &amp; problem solver. Thanks
             for checking out my site.
@@ -884,13 +972,16 @@ function Footer() {
 // tilted, browser-framed screenshot, followed by the write-up beneath it.
 function CaseStudyCard({ project, index = 0, reverse = false }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [activeShot, setActiveShot] = useState(0);
   const gradient = getCategoryGradient(project.category);
+  const shots = project.screenshots || [{ label: null, src: project.screenshot }];
+  const current = shots[activeShot] || shots[0];
 
   return (
     <BlurReveal delay={index * 0.05} amount={0.1} className="group">
       <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${gradient} p-6 md:p-10`}>
         <div className="mb-8 flex flex-col items-start gap-4 sm:flex-row sm:justify-between sm:gap-6">
-          <p className="max-w-lg font-serif text-xl italic leading-snug text-white sm:text-2xl md:text-3xl">
+          <p className="max-w-lg font-heading font-bold text-xl leading-snug text-white sm:text-2xl md:text-3xl">
             {project.description}
           </p>
           <a
@@ -911,20 +1002,47 @@ function CaseStudyCard({ project, index = 0, reverse = false }) {
             reverse ? '-rotate-1' : 'rotate-1'
           } group-hover:rotate-0`}
         >
-          <div className="flex items-center gap-1.5 border-b border-white/10 bg-black/60 px-3 py-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-            <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
-            <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 bg-black/60 px-3 py-2">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+              <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
+              <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
+            </div>
+            {shots.length > 1 && (
+              <div className="flex flex-wrap items-center gap-1">
+                {shots.map((shot, i) => (
+                  <button
+                    key={shot.label}
+                    onClick={() => setActiveShot(i)}
+                    className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide transition-colors duration-300 ${
+                      activeShot === i ? 'bg-white text-black' : 'text-white/50 hover:text-white'
+                    }`}
+                  >
+                    {shot.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
+          {current.note && (
+            <div className="border-b border-white/10 bg-amber-400/10 px-3 py-1.5 text-center text-[11px] font-semibold text-amber-300">
+              {current.note}
+            </div>
+          )}
           <div className="h-56 md:h-72">
-            <AutoScrollImage src={project.screenshot} alt={`${project.title} screenshot`} isHovered={isHovered} />
+            <AutoScrollImage
+              key={current.src}
+              src={current.src}
+              alt={`${project.title} — ${current.label || 'screenshot'}`}
+              isHovered={isHovered}
+            />
           </div>
         </div>
       </div>
 
       <div className="px-2 py-6 md:px-4">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-          <h3 className="font-serif text-2xl italic text-white md:text-3xl">{project.title}</h3>
+          <h3 className="font-heading font-bold text-2xl text-white md:text-3xl">{project.title}</h3>
           <span className="text-xs uppercase tracking-[0.2em] text-white/40">{project.category}</span>
         </div>
 
@@ -951,8 +1069,11 @@ function CaseStudyCard({ project, index = 0, reverse = false }) {
 
 function ProjectCard({ project, layout = 'grid' }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [activeShot, setActiveShot] = useState(0);
   const isList = layout === 'list';
   const gradient = getCategoryGradient(project.category);
+  const shots = project.screenshots || [{ label: null, src: project.screenshot }];
+  const current = shots[activeShot] || shots[0];
 
   return (
     <motion.div
@@ -966,7 +1087,7 @@ function ProjectCard({ project, layout = 'grid' }) {
     >
       <div className={`relative overflow-hidden bg-gradient-to-br ${gradient} p-2 ${isList ? 'sm:w-80 sm:flex-shrink-0' : ''}`}>
         <div className={`relative overflow-hidden rounded-lg ${isList ? 'h-52 sm:h-full' : 'h-52'}`}>
-          <AutoScrollImage src={project.screenshot} alt={`${project.title} screenshot`} isHovered={isHovered} />
+          <AutoScrollImage key={current.src} src={current.src} alt={`${project.title} — ${current.label || 'screenshot'}`} isHovered={isHovered} />
         </div>
 
         <div className="absolute top-4 left-4 z-10">
@@ -985,10 +1106,35 @@ function ProjectCard({ project, layout = 'grid' }) {
         >
           <ExternalLink size={16} />
         </a>
+
+        {shots.length > 1 && (
+          <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 flex-wrap items-center justify-center gap-1 px-2">
+            {shots.map((shot, i) => (
+              <button
+                key={shot.label}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveShot(i);
+                }}
+                className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide backdrop-blur-sm transition-colors duration-300 ${
+                  activeShot === i ? 'bg-white text-black' : 'bg-black/50 text-white/70 hover:text-white'
+                }`}
+              >
+                {shot.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {current.note && (
+          <div className="absolute inset-x-0 top-12 z-10 mx-auto w-fit rounded-full bg-amber-400/90 px-3 py-1 text-[10px] font-semibold text-black">
+            {current.note}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="mb-2 font-serif text-2xl italic text-white">{project.title}</h3>
+        <h3 className="mb-2 font-heading font-bold text-2xl text-white">{project.title}</h3>
         <p className="mb-5 flex-1 text-sm leading-relaxed text-white/55">{project.description}</p>
 
         <div className="mb-5 flex flex-wrap gap-2">
@@ -1033,11 +1179,28 @@ function ProjectCard({ project, layout = 'grid' }) {
 const allTech = Array.from(new Set(skills.flatMap((s) => s.items)));
 
 const tools = [
-  { label: 'GitHub', icon: Github },
-  { label: 'Tailwind', icon: Wind },
-  { label: 'Node.js', icon: Server },
-  { label: 'PHP', icon: FileCode },
-  { label: 'Figma', icon: Figma },
+  { label: 'React', icon: SiReact },
+  { label: 'Next.js', icon: SiNextdotjs },
+  { label: 'Node.js', icon: SiNodedotjs },
+  { label: 'Expo', icon: SiExpo },
+  { label: 'Tailwind', icon: SiTailwindcss },
+  { label: 'GitHub', icon: SiGithub },
+  { label: 'PHP', icon: SiPhp },
+  { label: 'Figma', icon: SiFigma },
+];
+
+// Brand-colored icons that orbit the hero illustration.
+const orbitTech = [
+  { label: 'React', icon: SiReact, color: '#61DAFB' },
+  { label: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
+  { label: 'Node.js', icon: SiNodedotjs, color: '#5FA04E' },
+  { label: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+  { label: 'Expo', icon: SiExpo, color: '#FFFFFF' },
+  { label: 'Tailwind CSS', icon: SiTailwindcss, color: '#38BDF8' },
+  { label: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+  { label: 'GitHub', icon: SiGithub, color: '#FFFFFF' },
+  { label: 'MySQL', icon: SiMysql, color: '#4479A1' },
+  { label: 'PHP', icon: SiPhp, color: '#8892BF' },
 ];
 
 function Preloader() {
@@ -1060,7 +1223,7 @@ function Preloader() {
       transition={{ duration: 0.5, ease: EASE }}
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-black"
     >
-      <h1 className="px-6 text-center font-serif text-4xl italic sm:text-5xl md:text-7xl">
+      <h1 className="px-6 text-center font-heading font-bold text-4xl sm:text-5xl md:text-7xl">
         <span className="text-white">{displayText}</span>
         <span className="animate-blink ml-1 inline-block h-8 w-0.5 bg-white align-middle sm:h-10 md:h-14" />
       </h1>
@@ -1105,9 +1268,11 @@ function ConcentricRings() {
           style={{ width: `${60 + i * 40}px`, height: `${60 + i * 40}px` }}
         />
       ))}
-      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-sm font-bold text-black">
-        ZK
-      </span>
+      <img
+        src="/zehan-profile.jpg"
+        alt="Zehan Khan"
+        className="h-14 w-14 rounded-full object-cover ring-2 ring-white/20"
+      />
     </div>
   );
 }
@@ -1158,7 +1323,7 @@ function HomePage() {
                     <span className="block text-5xl font-medium text-white sm:text-6xl md:text-8xl">Web</span>
                   </BlurReveal>
                   <BlurReveal delay={0.12}>
-                    <span className="block bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200 bg-clip-text font-serif text-5xl italic text-transparent sm:text-6xl md:text-8xl">
+                    <span className="block bg-gradient-to-r from-indigo-300 via-white to-fuchsia-200 bg-clip-text font-heading font-bold text-5xl text-transparent sm:text-6xl md:text-8xl">
                       developer
                     </span>
                   </BlurReveal>
@@ -1185,44 +1350,27 @@ function HomePage() {
                 </BlurReveal>
               </div>
 
-              <div className="flex flex-col items-start gap-8 md:items-end">
-                <BlurReveal delay={0.15} className="w-full max-w-[240px] md:w-auto">
-                  <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-                    <p className="mb-2 flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-emerald-300">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Available now
-                    </p>
-                    <p className="text-lg font-semibold text-white">{hero.title}</p>
-                    <p className="mt-1 text-sm text-white/40">WordPress &middot; React &middot; Next.js</p>
+              <div className="relative flex flex-col items-center gap-6 md:items-end">
+                <BlurReveal delay={0.15} className="self-start md:self-end">
+                  <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2">
+                    <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                    <span className="whitespace-nowrap text-[11px] uppercase tracking-[0.2em] text-emerald-300">Available now</span>
+                    <span className="hidden whitespace-nowrap text-[11px] text-white/40 sm:inline">&middot; {hero.title}</span>
                   </div>
                 </BlurReveal>
 
-                <BlurReveal delay={0.25} className="hidden text-right md:block">
-                  <p className="font-serif text-xl italic text-white/40">Engineering with care.</p>
-                  <p className="font-serif text-4xl italic text-white">{hero.name}</p>
+                <BlurReveal delay={0.25} className="relative flex h-[250px] w-[250px] items-center justify-center sm:h-[320px] sm:w-[320px] md:h-[360px] md:w-[360px]">
+                  <TechOrbit items={orbitTech} radius={90} />
+                  <img
+                    src="/zehan-hero.png"
+                    alt="Illustrated portrait of Zehan Khan"
+                    className="relative z-10 h-full w-auto drop-shadow-2xl"
+                  />
                 </BlurReveal>
 
-                <BlurReveal delay={0.35} className="w-full max-w-[280px]">
-                  <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] shadow-2xl">
-                    <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2">
-                      <span className="h-2 w-2 rounded-full bg-red-400/70" />
-                      <span className="h-2 w-2 rounded-full bg-yellow-400/70" />
-                      <span className="h-2 w-2 rounded-full bg-green-400/70" />
-                    </div>
-                    <pre className="overflow-x-auto p-4 text-xs leading-relaxed text-white/60">
-                      <code>
-                        <span className="text-fuchsia-300">const</span> stack = [{'\n'}
-                        {'  '}
-                        <span className="text-emerald-300">&apos;React&apos;</span>,{'\n'}
-                        {'  '}
-                        <span className="text-emerald-300">&apos;Next.js&apos;</span>,{'\n'}
-                        {'  '}
-                        <span className="text-emerald-300">&apos;WordPress&apos;</span>,{'\n'}
-                        {'  '}
-                        <span className="text-emerald-300">&apos;Tailwind&apos;</span>,{'\n'}
-                        ];
-                      </code>
-                    </pre>
-                  </div>
+                <BlurReveal delay={0.4} className="text-center md:text-right">
+                  <p className="font-heading text-lg text-white/40">Engineering with care.</p>
+                  <p className="font-heading font-bold text-3xl text-white">{hero.name}</p>
                 </BlurReveal>
               </div>
             </div>
@@ -1233,7 +1381,7 @@ function HomePage() {
             <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-y divide-white/10 md:grid-cols-4 md:divide-y-0">
               {[
                 { icon: Briefcase, label: 'Now', value: experience[0].role, sub: experience[0].company },
-                { icon: Wind, label: 'Focus', value: 'WordPress + React', sub: 'Full-stack builds' },
+                { icon: Layers, label: 'Focus', value: 'React + Node + Expo', sub: 'Web & mobile builds' },
                 { icon: MapPin, label: 'Based', value: hero.location.split(',')[0], sub: 'Remote friendly' },
               ].map((tile) => (
                 <BlurReveal key={tile.label} className="group px-6 py-8">
@@ -1260,9 +1408,9 @@ function HomePage() {
           </section>
 
           {/* Rings + stack marquee */}
-          <section className="px-6 py-24 md:px-10">
+          <section id="skills" className="px-6 py-24 md:px-10">
             <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
-              <BlurReveal className="flex flex-col items-center gap-6 rounded-3xl border border-white/10 p-10 text-center">
+              <BlurReveal className="min-w-0 flex flex-col items-center gap-6 rounded-3xl border border-white/10 p-10 text-center">
                 <ConcentricRings />
                 <div>
                   <p className="mb-2 text-lg font-semibold text-white">Let&rsquo;s build together</p>
@@ -1272,7 +1420,7 @@ function HomePage() {
                 </div>
               </BlurReveal>
 
-              <BlurReveal delay={0.1} className="flex flex-col justify-center gap-6 rounded-3xl border border-white/10 p-10">
+              <BlurReveal delay={0.1} className="min-w-0 flex flex-col justify-center gap-6 rounded-3xl border border-white/10 p-10">
                 <div>
                   <p className="mb-1 text-[11px] uppercase tracking-[0.2em] text-white/30">Tech stack</p>
                   <p className="text-lg font-semibold text-white">The stack behind everything I ship</p>
@@ -1335,7 +1483,7 @@ function HomePage() {
               <BlurReveal className="mb-16 text-center">
                 <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-white/30">Case studies</p>
                 <h2 className="text-4xl font-medium text-white md:text-6xl">
-                  Curated <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">work</span>
+                  Curated <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">work</span>
                 </h2>
               </BlurReveal>
 
@@ -1360,7 +1508,7 @@ function HomePage() {
                 <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-white/30">Know about me</p>
                 <h2 className="mb-6 text-4xl font-medium text-white md:text-5xl">
                   Full-stack developer, and a little bit of{' '}
-                  <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">everything</span>
+                  <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">everything</span>
                 </h2>
                 {hero.bio.map((para) => (
                   <p key={para} className="mb-4 text-white/50">
@@ -1408,7 +1556,7 @@ function HomePage() {
                 <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-white/30">Journey</p>
                 <h2 className="text-4xl font-medium text-white md:text-6xl">
                   Where I&rsquo;ve{' '}
-                  <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">worked</span>
+                  <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">worked</span>
                 </h2>
               </BlurReveal>
 
@@ -1456,7 +1604,7 @@ function HomePage() {
 
               <h2 className="text-4xl font-medium text-white md:text-6xl">
                 From idea to{' '}
-                <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-200">launch.</span>
+                <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-200">launch.</span>
               </h2>
               <p className="max-w-lg text-white/60">
                 Have a project in mind? Reach out directly — I typically respond within a few hours.
@@ -1517,7 +1665,7 @@ function ProjectsPage() {
           <BlurReveal className="mb-16 max-w-2xl">
             <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-white/30">Project gallery</p>
             <h1 className="text-4xl font-medium text-white sm:text-5xl md:text-7xl">
-              All <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">work</span>
+              All <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">work</span>
             </h1>
             <p className="mt-6 text-lg text-white/45">
               {projects.length} projects from a portfolio of 150+ websites and applications built for clients worldwide.
@@ -1606,7 +1754,7 @@ function ProjectsPage() {
           <BlurReveal delay={0.1}>
             <div className="mt-24 rounded-3xl border border-white/10 p-12 text-center">
               <h2 className="mb-4 text-3xl font-medium">
-                Ready to add your project <span className="font-serif italic">here?</span>
+                Ready to add your project <span className="font-heading font-bold">here?</span>
               </h2>
               <p className="mx-auto mb-8 max-w-xl text-white/45">
                 With 150+ projects delivered, I have the experience to handle any web development challenge.
@@ -1628,6 +1776,103 @@ function ProjectsPage() {
                 </a>
               </div>
             </div>
+          </BlurReveal>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* UsesPage                                                             */
+/* ------------------------------------------------------------------ */
+
+const hardware = [
+  {
+    icon: Laptop,
+    badge: 'Primary machine',
+    name: 'Lenovo IdeaPad Gaming',
+    spec: '16GB DDR4 RAM · 512GB NVMe SSD',
+  },
+  {
+    icon: Monitor,
+    badge: '32"',
+    name: 'MARQ Display',
+    spec: '32" External Monitor',
+  },
+];
+
+function UsesPage() {
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(20,20,30,0.5),rgba(0,0,0,1)_60%)]" />
+      </div>
+
+      <ScrollProgress />
+      <Nav variant="uses" />
+
+      <main className="relative z-10 px-6 pb-24 pt-40 md:px-10 md:pt-48">
+        <div className="mx-auto max-w-5xl">
+          <BlurReveal className="mb-16 max-w-2xl">
+            <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-white/30">The gear</p>
+            <h1 className="text-5xl font-medium text-white md:text-7xl">
+              What powers{' '}
+              <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">
+                my work
+              </span>
+            </h1>
+            <p className="mt-6 text-lg text-white/45">The hardware and stack behind everything I ship.</p>
+          </BlurReveal>
+
+          {/* 01 — Hardware */}
+          <div className="grid gap-8 border-t border-white/10 py-14 md:grid-cols-[200px_1fr] md:gap-10">
+            <BlurReveal>
+              <p className="mb-2 text-xs text-white/30">01</p>
+              <h2 className="text-lg font-semibold text-white">Setup.</h2>
+              <p className="text-sm text-white/40">The Hardware</p>
+            </BlurReveal>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {hardware.map((item, i) => (
+                <BlurReveal
+                  key={item.name}
+                  delay={i * 0.05}
+                  className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-8"
+                >
+                  <span className="absolute right-5 top-5 rounded-full border border-white/15 px-3 py-1 text-[10px] uppercase tracking-wide text-white/50">
+                    {item.badge}
+                  </span>
+                  <item.icon size={36} className="mb-8 text-white/70" />
+                  <p className="font-heading font-bold text-xl text-white">{item.name}</p>
+                  <p className="mt-1 text-sm text-white/45">{item.spec}</p>
+                </BlurReveal>
+              ))}
+            </div>
+          </div>
+
+          {/* 02 — Stack */}
+          <div className="grid gap-8 border-t border-white/10 py-14 md:grid-cols-[200px_1fr] md:gap-10">
+            <BlurReveal>
+              <p className="mb-2 text-xs text-white/30">02</p>
+              <h2 className="text-lg font-semibold text-white">Stack.</h2>
+              <p className="text-sm text-white/40">Daily Tools</p>
+            </BlurReveal>
+            <BlurReveal delay={0.05} className="flex flex-wrap gap-6">
+              {tools.map((tool) => (
+                <div key={tool.label} className="flex flex-col items-center gap-2">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] text-white/70 transition-colors duration-300 hover:border-white/30 hover:text-white">
+                    <tool.icon size={22} />
+                  </span>
+                  <span className="text-xs text-white/40">{tool.label}</span>
+                </div>
+              ))}
+            </BlurReveal>
+          </div>
+
+          <BlurReveal className="border-t border-white/10 pt-10 text-center text-sm text-white/30">
+            Always tweaking the setup — check back for updates.
           </BlurReveal>
         </div>
       </main>
@@ -1672,6 +1917,14 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <ProjectsPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/uses"
+          element={
+            <PageTransition>
+              <UsesPage />
             </PageTransition>
           }
         />
