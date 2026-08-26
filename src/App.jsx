@@ -24,6 +24,7 @@ import {
   Eye,
   Grid,
   Laptop,
+  Languages,
   Layers,
   List,
   Mail,
@@ -31,6 +32,8 @@ import {
   Menu,
   MessageSquare,
   Monitor,
+  Plane,
+  ShieldCheck,
   X,
   XCircle,
 } from 'lucide-react';
@@ -47,6 +50,7 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si';
+import { FaLinkedin } from 'react-icons/fa';
 
 /* ------------------------------------------------------------------ */
 /* Data — single source of truth for all portfolio content.            */
@@ -55,24 +59,28 @@ import {
 const hero = {
   name: 'Zehan Khan',
   title: 'Full-Stack Developer',
-  badge: 'Available for freelance projects',
+  badge: 'Open to relocation worldwide · Immediately available',
   subheadline:
-    "I build fast, scalable products across web and mobile — React, Next.js, and Node.js on the backend, React Native (Expo) and API integrations on the front — plus custom WordPress builds when that's the right tool.",
+    "Building scalable web applications with React, Next.js, Node.js & PHP — with CMS/e-commerce platforms like WordPress and Shopify as a plus. Six years shipping inside development teams using Git, Jira, and code review. Looking to bring that to a software dev team — open to relocating.",
   stats: [
     { value: '6+', label: 'Years Experience' },
     { value: '150+', label: 'Projects Delivered' },
-    { value: '100%', label: 'Client Satisfaction' },
-    { value: '24/7', label: 'Support Available' },
+    { value: '30+', label: 'Custom WP Themes & Plugins' },
+    { value: 'Day 1', label: 'Available to Start' },
   ],
   whatsappLink: 'https://wa.me/918439858095',
   phoneLink: 'tel:+918439858095',
   phoneDisplay: '+91 8439858095',
   email: 'zehandev@gmail.com',
   location: 'Aligarh, UP, India',
-  resume: '/Zehankhan.pdf',
+  relocation: 'Open to relocation · visa sponsorship where required',
+  linkedin: 'https://www.linkedin.com/in/zehan-khan-aa8a2a1b9/',
+  github: 'https://github.com/Zehankhandev-debug',
+  portfolioUrl: 'https://zehandev.vercel.app/',
+  resume: '/Zehan-Khan-Resume.docx',
   bio: [
-    "I'm a full-stack developer who's spent six years moving between React, Next.js, Node.js, and React Native — whichever gets a client's product shipped without cutting corners. WordPress still shows up when a project calls for it.",
-    "Most of my work starts as a rebuild: a slow site, a CMS nobody trusts, a checkout that leaks conversions, an app stuck in review. I like that part — finding what's actually broken and fixing it cleanly, API by API.",
+    "I'm a full-stack developer who's spent six years across React, Next.js, Node.js, and PHP — building scalable web products as part of real development teams, not just solo client work, with CMS/e-commerce platforms like WordPress and Shopify as a plus. I'm now open to relocating and bringing that experience to a software development team full-time.",
+    "Most of my work starts as a rebuild: a slow site, a CMS nobody trusts, a checkout that leaks conversions, an app stuck in review. I like that part — finding what's actually broken and fixing it cleanly, API by API, in step with the rest of the team.",
   ],
 };
 
@@ -80,30 +88,36 @@ const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Availability', href: '#availability' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
 
 const skills = [
   {
-    category: 'Frontend Technologies',
-    icon: 'Code2',
-    items: ['React.js', 'Next.js', 'Tailwind CSS', 'JavaScript', 'TypeScript'],
-  },
-  {
-    category: 'Mobile & APIs',
-    icon: 'Smartphone',
-    items: ['React Native', 'Expo', 'REST APIs', 'Third-Party Integrations', 'Push Notifications'],
-  },
-  {
     category: 'Backend & Databases',
     icon: 'Server',
     items: ['Node.js', 'Express', 'PHP', 'MySQL', 'SQL'],
   },
   {
+    category: 'Frontend Technologies',
+    icon: 'Code2',
+    items: ['React.js', 'Next.js', 'Tailwind CSS', 'JavaScript', 'TypeScript'],
+  },
+  {
     category: 'WordPress & E-commerce',
     icon: 'Globe',
-    items: ['Custom Themes', 'WooCommerce', 'Shopify', 'Elementor', 'ACF'],
+    items: ['Custom Themes', 'Plugin Development', 'WooCommerce', 'Shopify', 'Elementor', 'ACF'],
+  },
+  {
+    category: 'Team & Collaboration',
+    icon: 'Users',
+    items: ['Git & GitHub', 'Jira', 'Agile/Scrum', 'Code Reviews', 'Cross-functional Delivery'],
+  },
+  {
+    category: 'Mobile & APIs',
+    icon: 'Smartphone',
+    items: ['React Native', 'Expo', 'REST APIs', 'Third-Party Integrations', 'Push Notifications'],
   },
 ];
 
@@ -113,7 +127,7 @@ const experience = [
     role: 'Web Developer',
     period: '2025 — Present',
     description:
-      'Building and maintaining custom web solutions for a portfolio of active clients, from first line of code to production support.',
+      'Building and maintaining custom WordPress and web solutions as part of the development team, from first line of code to production support.',
     achievements: [
       'Shipped custom WordPress builds tailored to each client’s workflow',
       'Delivered fully responsive, mobile-first layouts across every project',
@@ -167,6 +181,33 @@ const education = [
     degree: 'Diploma in Computer Engineering',
     institution: 'Aligarh Muslim University',
     year: '2020',
+  },
+];
+
+const relocationInfo = [
+  {
+    icon: ShieldCheck,
+    label: 'Work Authorization',
+    value: 'Visa sponsorship needed',
+    sub: 'Ready to start the process as soon as an offer is in place',
+  },
+  {
+    icon: Languages,
+    label: 'Languages',
+    value: 'English: C1',
+    sub: 'German: A1 — actively learning',
+  },
+  {
+    icon: Clock,
+    label: 'Availability',
+    value: 'Immediately available',
+    sub: 'No notice period to serve',
+  },
+  {
+    icon: Plane,
+    label: 'Relocation',
+    value: 'Open to relocating',
+    sub: 'Flexible on location for the right team',
   },
 ];
 
@@ -636,7 +677,7 @@ function FloatingCTA({ onClick, delay = 10000 }) {
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white" />
           </span>
           <MessageSquare size={18} />
-          <span className="text-sm font-bold">Get Free Quote</span>
+          <span className="text-sm font-bold">Let&rsquo;s Connect</span>
           <ChevronRight size={16} />
         </motion.button>
       )}
@@ -645,10 +686,10 @@ function FloatingCTA({ onClick, delay = 10000 }) {
 }
 
 const schedulePerks = [
-  'Detailed project analysis & scope review',
-  'Customized pricing quote & timeline',
-  'Technical recommendations & best practices',
-  'Q&A session for all your project concerns',
+  'Walkthrough of relevant WordPress & full-stack projects',
+  'Discussion of role fit within your dev team',
+  'Relocation, visa sponsorship & timeline questions',
+  'Start date & onboarding planning',
 ];
 
 function ScheduleCallPopup({ isOpen, onClose }) {
@@ -677,8 +718,8 @@ function ScheduleCallPopup({ isOpen, onClose }) {
                   <Calendar size={20} className="text-white" />
                 </span>
                 <div>
-                  <h3 className="text-base font-bold text-white sm:text-xl">Schedule a Free Consultation</h3>
-                  <p className="text-xs text-white/50 sm:text-sm">Get personalized pricing for your project</p>
+                  <h3 className="text-base font-bold text-white sm:text-xl">Schedule a Call</h3>
+                  <p className="text-xs text-white/50 sm:text-sm">Let&rsquo;s talk about the role and the team</p>
                 </div>
               </div>
               <button onClick={onClose} className="flex-shrink-0 rounded-lg p-2 transition-colors hover:bg-white/10">
@@ -697,8 +738,8 @@ function ScheduleCallPopup({ isOpen, onClose }) {
               </div>
 
               <div className="mb-6 rounded-lg border border-white/10 bg-white/5 p-4 text-center text-sm text-white/70">
-                <span className="font-bold text-emerald-400">No commitment required</span> — just a friendly chat
-                about your project needs.
+                <span className="font-bold text-emerald-400">Immediately available</span> — open to relocating,
+                with visa sponsorship where required.
               </div>
 
               <div className="space-y-3">
@@ -709,10 +750,10 @@ function ScheduleCallPopup({ isOpen, onClose }) {
                   onClick={onClose}
                   className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3 text-center font-bold text-white transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/40"
                 >
-                  <MessageSquare size={20} /> Schedule on WhatsApp
+                  <MessageSquare size={20} /> Message on WhatsApp
                 </a>
                 <a
-                  href={`mailto:${hero.email}?subject=Schedule a Call - Website Project Consultation&body=Hi Zehan, I'd like to schedule a free consultation call for my website project.`}
+                  href={`mailto:${hero.email}?subject=Schedule a Call - Role Discussion&body=Hi Zehan, I'd like to schedule a call to discuss a full-stack developer role with your team.`}
                   onClick={onClose}
                   className="flex w-full items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-center font-bold text-white transition-transform duration-300 hover:scale-[1.02] hover:bg-white/10"
                 >
@@ -722,7 +763,7 @@ function ScheduleCallPopup({ isOpen, onClose }) {
             </div>
 
             <div className="border-t border-white/10 bg-white/5 px-6 py-4">
-              <p className="text-center text-xs text-white/40">Typically respond within 2-3 hours during business hours</p>
+              <p className="text-center text-xs text-white/40">Typically responds within a few hours</p>
             </div>
           </motion.div>
         </div>
@@ -810,6 +851,15 @@ function Nav({ variant = 'home' }) {
               All Projects
             </button>
           )}
+
+          {variant !== 'uses' && (
+            <button
+              onClick={() => navigate('/uses')}
+              className="rounded-full px-4 py-1.5 text-sm text-white/60 transition-colors duration-300 hover:bg-white/10 hover:text-white"
+            >
+              Setup
+            </button>
+          )}
         </div>
 
         <a
@@ -818,7 +868,7 @@ function Nav({ variant = 'home' }) {
           rel="noopener noreferrer"
           className="hidden items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition-transform duration-300 hover:scale-105 md:flex"
         >
-          Book a call
+          Let&rsquo;s connect
         </a>
 
         <button
@@ -871,13 +921,25 @@ function Nav({ variant = 'home' }) {
                 </button>
               )}
 
+              {variant !== 'uses' && (
+                <button
+                  onClick={() => {
+                    setOpen(false);
+                    navigate('/uses');
+                  }}
+                  className="py-2 text-left font-medium text-white/70 transition-colors hover:text-white"
+                >
+                  Setup
+                </button>
+              )}
+
               <a
                 href={hero.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-black"
               >
-                Book a call
+                Let&rsquo;s connect
               </a>
             </div>
           </motion.div>
@@ -887,7 +949,7 @@ function Nav({ variant = 'home' }) {
   );
 }
 
-const footerGeneral = [...navLinks, { label: 'All Projects', href: '/projects' }, { label: 'Uses', href: '/uses' }];
+const footerGeneral = [...navLinks, { label: 'All Projects', href: '/projects' }, { label: 'Setup', href: '/uses' }];
 
 function Footer() {
   return (
@@ -900,8 +962,8 @@ function Footer() {
             className="mb-4 h-8 w-8 rounded-full object-cover ring-1 ring-white/15"
           />
           <p className="max-w-xs text-sm text-white/45">
-            I&rsquo;m {hero.name.split(' ')[0]} — a {hero.title.toLowerCase()}, freelancer &amp; problem solver. Thanks
-            for checking out my site.
+            I&rsquo;m {hero.name.split(' ')[0]} — a {hero.title.toLowerCase()} open to relocating to join
+            a software development team. Thanks for checking out my site.
           </p>
         </div>
 
@@ -940,6 +1002,26 @@ function Footer() {
                 className="text-white/55 transition-colors hover:text-white"
               >
                 WhatsApp
+              </a>
+            </li>
+            <li>
+              <a
+                href={hero.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/55 transition-colors hover:text-white"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href={hero.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/55 transition-colors hover:text-white"
+              >
+                GitHub
               </a>
             </li>
             <li>
@@ -1346,6 +1428,26 @@ function HomePage() {
                     <a href="#work" className="text-sm text-white/50 underline underline-offset-4 transition-colors hover:text-white">
                       View my work
                     </a>
+                    <div className="flex items-center gap-3">
+                      <a
+                        href={hero.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="LinkedIn"
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-white/30 hover:text-white"
+                      >
+                        <FaLinkedin size={16} />
+                      </a>
+                      <a
+                        href={hero.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="GitHub"
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-white/30 hover:text-white"
+                      >
+                        <SiGithub size={16} />
+                      </a>
+                    </div>
                   </div>
                 </BlurReveal>
               </div>
@@ -1354,7 +1456,7 @@ function HomePage() {
                 <BlurReveal delay={0.15} className="self-start md:self-end">
                   <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2">
                     <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
-                    <span className="whitespace-nowrap text-[11px] uppercase tracking-[0.2em] text-emerald-300">Available now</span>
+                    <span className="whitespace-nowrap text-[11px] uppercase tracking-[0.2em] text-emerald-300">Open to relocate</span>
                     <span className="hidden whitespace-nowrap text-[11px] text-white/40 sm:inline">&middot; {hero.title}</span>
                   </div>
                 </BlurReveal>
@@ -1381,8 +1483,8 @@ function HomePage() {
             <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-y divide-white/10 md:grid-cols-4 md:divide-y-0">
               {[
                 { icon: Briefcase, label: 'Now', value: experience[0].role, sub: experience[0].company },
-                { icon: Layers, label: 'Focus', value: 'React + Node + Expo', sub: 'Web & mobile builds' },
-                { icon: MapPin, label: 'Based', value: hero.location.split(',')[0], sub: 'Remote friendly' },
+                { icon: Layers, label: 'Focus', value: 'React + Node.js + PHP', sub: 'Team-based delivery' },
+                { icon: MapPin, label: 'Open to', value: 'Relocation', sub: 'Visa sponsorship where required' },
               ].map((tile) => (
                 <BlurReveal key={tile.label} className="group px-6 py-8">
                   <tile.icon size={16} className="mb-3 text-white/30" />
@@ -1437,10 +1539,10 @@ function HomePage() {
             <div className="mx-auto max-w-6xl">
               <div className="grid gap-6 md:grid-cols-2">
                 <BlurReveal className="rounded-3xl border border-white/10 p-10">
-                  <p className="mb-1 text-[11px] uppercase tracking-[0.2em] text-white/30">What you get</p>
-                  <p className="mb-6 text-lg font-semibold text-white">Clean code, shipped and supported</p>
+                  <p className="mb-1 text-[11px] uppercase tracking-[0.2em] text-white/30">What your team gets</p>
+                  <p className="mb-6 text-lg font-semibold text-white">A teammate who ships and communicates</p>
                   <StaggerGroup className="space-y-4">
-                    {['Meets deadlines', 'Responsive, tested builds', 'Direct access — no middlemen', 'Support after launch'].map((item) => (
+                    {['Ships on schedule, sprint after sprint', 'Clean, reviewable code with tests', 'Comfortable in agile/Scrum workflows', 'Clear communication in English'].map((item) => (
                       <StaggerItem key={item} className="flex items-center gap-3 text-sm text-white/60">
                         <CheckCircle size={16} className="text-emerald-400" /> {item}
                       </StaggerItem>
@@ -1449,13 +1551,13 @@ function HomePage() {
                 </BlurReveal>
 
                 <BlurReveal delay={0.1} className="rounded-3xl border border-white/10 p-10">
-                  <p className="mb-1 text-[11px] uppercase tracking-[0.2em] text-white/30">Flexible with timezones</p>
-                  <p className="mb-6 text-lg font-semibold text-white">Based in India, available globally</p>
+                  <p className="mb-1 text-[11px] uppercase tracking-[0.2em] text-white/30">Open to relocation</p>
+                  <p className="mb-6 text-lg font-semibold text-white">Open to relocating for the right team</p>
                   <div className="flex items-center gap-4 rounded-xl bg-white/[0.03] p-4">
                     <Clock size={20} className="text-white/40" />
                     <div>
-                      <p className="text-sm font-medium text-white">IST &middot; GMT+5:30</p>
-                      <p className="text-xs text-white/40">Overlaps comfortably with US &amp; EU working hours</p>
+                      <p className="text-sm font-medium text-white">Immediately available</p>
+                      <p className="text-xs text-white/40">Open to visa sponsorship &amp; flexible on start-date logistics</p>
                     </div>
                   </div>
                 </BlurReveal>
@@ -1530,7 +1632,7 @@ function HomePage() {
               </BlurReveal>
 
               <BlurReveal delay={0.1} className="flex flex-col items-center gap-10">
-                <RotatingBadge text="AVAILABLE FOR WORK • FREELANCE • ">
+                <RotatingBadge text="OPEN TO RELOCATE • FULL-TIME • ">
                   <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-black">
                     <ArrowUpRight size={22} />
                   </span>
@@ -1587,11 +1689,37 @@ function HomePage() {
             </div>
           </section>
 
+          {/* Relocation & Availability */}
+          <section id="availability" className="px-6 py-24 md:px-10">
+            <div className="mx-auto max-w-6xl">
+              <BlurReveal className="mb-16 text-center">
+                <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-white/30">For hiring teams</p>
+                <h2 className="text-4xl font-medium text-white md:text-6xl">
+                  Relocation &amp;{' '}
+                  <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-fuchsia-300">
+                    availability
+                  </span>
+                </h2>
+              </BlurReveal>
+
+              <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {relocationInfo.map((item) => (
+                  <StaggerItem key={item.label} className="rounded-3xl border border-white/10 p-8">
+                    <item.icon size={20} className="mb-4 text-white/40" />
+                    <p className="mb-1 text-[11px] uppercase tracking-[0.2em] text-white/30">{item.label}</p>
+                    <p className="font-semibold text-white">{item.value}</p>
+                    <p className="mt-1 text-sm text-white/45">{item.sub}</p>
+                  </StaggerItem>
+                ))}
+              </StaggerGroup>
+            </div>
+          </section>
+
           {/* Final CTA */}
           <section id="contact" className="relative overflow-hidden px-6 py-32 md:px-10">
             <div className="grain absolute inset-0 bg-gradient-to-br from-indigo-700 via-blue-800 to-black" />
             <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
-              <RotatingBadge text="OPEN TO WORK • FREELANCE PROJECTS • ">
+              <RotatingBadge text="OPEN TO WORK • FULL-TIME • ">
                 <a
                   href={hero.whatsappLink}
                   target="_blank"
@@ -1603,14 +1731,15 @@ function HomePage() {
               </RotatingBadge>
 
               <h2 className="text-4xl font-medium text-white md:text-6xl">
-                From idea to{' '}
-                <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-200">launch.</span>
+                From portfolio to{' '}
+                <span className="font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-200">onboarding.</span>
               </h2>
               <p className="max-w-lg text-white/60">
-                Have a project in mind? Reach out directly — I typically respond within a few hours.
+                Looking for a full-stack developer to join your team? Reach out directly — I&rsquo;m
+                immediately available and typically respond within a few hours.
               </p>
 
-              <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="flex flex-wrap items-center justify-center gap-4">
                 <a
                   href={hero.whatsappLink}
                   target="_blank"
@@ -1618,6 +1747,14 @@ function HomePage() {
                   className="flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-transform duration-300 hover:scale-105"
                 >
                   <MessageSquare size={16} /> Message on WhatsApp
+                </a>
+                <a
+                  href={hero.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                >
+                  <FaLinkedin size={16} /> LinkedIn
                 </a>
                 <a
                   href={`mailto:${hero.email}`}
@@ -1754,10 +1891,11 @@ function ProjectsPage() {
           <BlurReveal delay={0.1}>
             <div className="mt-24 rounded-3xl border border-white/10 p-12 text-center">
               <h2 className="mb-4 text-3xl font-medium">
-                Ready to add your project <span className="font-heading font-bold">here?</span>
+                Building this <span className="font-heading font-bold">as a team, next.</span>
               </h2>
               <p className="mx-auto mb-8 max-w-xl text-white/45">
-                With 150+ projects delivered, I have the experience to handle any web development challenge.
+                150+ projects delivered solo and inside dev teams. Open to relocating to bring that experience to
+                your software team.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
                 <a
